@@ -1,6 +1,13 @@
 class_name Interactable
 extends Area2D
 
+# Interactables are fun because they're pretty damn flexible.
+# Just derive from this base class and make sure you have a do_interaction function in the script,
+# and you can do just about anything you want.
+# I've already included a bunch of stuff for a more broad scope of Walkaround-esque features,
+# like small popup screens, activating/deactivating objects, dialogue, captchables, and the like.
+# // TODO: Add animation triggering and camera cinematic positioning sequence bullshit \\
+
 export var inspect_title : String
 onready var inspect_text = $OuterMargins/InnerMargins/HBoxContainer/Text
 onready var inspect_box = $OuterMargins

@@ -1,6 +1,11 @@
 class_name Captchable
 extends Interactable
 
+# Captchables are the main "puzzle element" that I added, along with the Sylladex.
+# When the Inspector is set to Captchable Mode, the player can click on a Captchable
+# to captchalogue it in their Sylladex and store it for later use. Interactables can require a Captchable item in the sylladex to be able to be interacted with.
+# of course, if the sylladex is full, the player won't be able to captchalogue more items.
+
 # Item name is used to keep track of items when stored in Sylladex
 # and checked against interactions that require that certain item.
 export var item_name : String

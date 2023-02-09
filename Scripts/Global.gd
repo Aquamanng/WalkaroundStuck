@@ -7,6 +7,9 @@ extends Node
 # Scripts will call functions in Global whenever they need them; for instance,
 # rooms will call init_room when they are finished loading in order to have Global find the player and set the current_scene as that room
 
+# Here's a fun fact I was essentially going to do a RoomManager on every room to try and do what I wanted to do here.
+# Thank fucking GOD I found out about autoloads and shit right at the same time lmao
+
 enum InspectorMode { INSPECTABLE, CAPTCHABLE }
 export(InspectorMode) var inspect_mode
 var inspector_active : bool = true
@@ -28,6 +31,7 @@ var current_scene = null
 var next_scene : String = ""
 
 # To keep track of when the game has started its transition fade when moving to a new room
+# Trans rights!
 var scene_fading : bool = false
 var fade_out : bool = false
 var fade_tween
