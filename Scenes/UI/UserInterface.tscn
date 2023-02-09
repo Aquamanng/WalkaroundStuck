@@ -1,0 +1,174 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Sprites/UI/Inspector/InspectableButton.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/UI/Inspector/InspectableButtonHovered.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/UI/Inspector/InspectableButtonPressed.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/UI/Sylladex.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/UI/PlayerInterface.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/UI/DialogueBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/UI/HelpButton.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/HelpButtonHover.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/Interactables/InteractActions/ActionPopupInspect.gd" type="Script" id=9]
+[ext_resource path="res://Sprites/UI/HelpButtonPressed.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/UI/Inspector/CaptchableButton.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/UI/Inspector/CaptchableButtonHovered.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/UI/Inspector/CaptchableButtonPressed.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/UI/SylladexButton.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/UI/SylladexButtonPressed.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/UI/SylladexButtonHover.png" type="Texture" id=16]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sylladex:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "SylladexClose"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sylladex:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "SylladexClosedIdle"
+length = 0.001
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sylladex:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "SylladexOpen"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sylladex:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "SylladexOpenIdle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sylladex:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[node name="UserInterface" type="CanvasLayer"]
+layer = 10
+script = ExtResource( 5 )
+
+[node name="InspectableButton" type="TextureButton" parent="."]
+margin_right = 72.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
+expand = true
+
+[node name="CaptchableButton" type="TextureButton" parent="."]
+visible = false
+margin_right = 72.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 12 )
+expand = true
+
+[node name="SylladexButton" type="TextureButton" parent="."]
+margin_left = 80.0
+margin_right = 152.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
+expand = true
+
+[node name="HelpButton" type="TextureButton" parent="."]
+margin_left = 952.0
+margin_right = 1024.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 8 )
+expand = true
+script = ExtResource( 9 )
+inspect_dialog = [ "WASD or arrow keys to move around.
+The scroll-wheel can zoom the camera in and out.
+E toggles the Sylladex, TAB will toggle the current Inspector mode. The buttons in the top-left corner will do the same.", "The Inspector determines what objects you can mouse over and interact with when left-clicking on them.
+An exclamation point indicates INSPECTABLE MODE, a Captcha Card indicates CAPTCHABLE MODE.", "Click on a Captcha Card in the Sylladex to read its item's description, if an item is captchalogued in the card.
+Keep an eye out using Captchable Mode for any items hiding around!" ]
+
+[node name="Sylladex" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 160 )
+
+[node name="DialogueBox" parent="." instance=ExtResource( 6 )]
+visible = false
+margin_left = 128.0
+margin_top = 368.0
+margin_right = 896.0
+margin_bottom = 576.0
+
+[node name="FadeOverlay" type="ColorRect" parent="."]
+visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+
+[node name="InterfaceAnimator" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/SylladexClose = SubResource( 2 )
+anims/SylladexClosedIdle = SubResource( 3 )
+anims/SylladexOpen = SubResource( 4 )
+anims/SylladexOpenIdle = SubResource( 5 )
+
+[connection signal="pressed" from="InspectableButton" to="." method="toggle_inspector"]
+[connection signal="pressed" from="CaptchableButton" to="." method="toggle_inspector"]
+[connection signal="pressed" from="SylladexButton" to="." method="toggle_sylladex"]
+[connection signal="pressed" from="HelpButton" to="HelpButton" method="_on_Button_pressed"]
+
+[editable path="DialogueBox"]

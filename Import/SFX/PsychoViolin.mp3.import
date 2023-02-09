@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/PsychoViolin.mp3-7ee8ae8ff84d615756b2a9813791080d.mp3str"
+
+[deps]
+
+source_file="res://Import/SFX/PsychoViolin.mp3"
+dest_files=[ "res://.import/PsychoViolin.mp3-7ee8ae8ff84d615756b2a9813791080d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

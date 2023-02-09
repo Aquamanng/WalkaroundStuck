@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/Interactables/PopupInspectButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Popups/PopupItem_Fakearms.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Popups/PopupItem_BloodCaps.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Popups/PopupItem_Clothes.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Popups/PopupItem_SewKit.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Popups/Exit_PopupHover.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Popups/Exit_Popup.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Interactables/InteractActions/ActionPopup.gd" type="Script" id=8]
+[ext_resource path="res://Sprites/Popups/Exit_PopupPressed.png" type="Texture" id=9]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 0.866667 )
+border_width_left = 24
+border_width_top = 24
+border_width_right = 24
+border_width_bottom = 24
+border_blend = true
+
+[node name="ChestPopup" type="CanvasLayer"]
+layer = 2
+script = ExtResource( 8 )
+
+[node name="Background" type="Panel" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="Voodoo" parent="." instance=ExtResource( 1 )]
+margin_left = 704.0
+margin_top = 40.0
+margin_right = 816.0
+margin_bottom = 184.0
+inspect_dialog = [ "This is your VOODOO DOLL! Whenever you're bored you like to jab the fucker with the needles. It's rather therapeutic.", "You're pretty sure it's FAKE AS SHIT, and as such doesn't actually do anything. Or at least not to anyone you know. Eh, not your concern." ]
+
+[node name="Clothes" parent="." instance=ExtResource( 1 )]
+margin_left = 760.0
+margin_top = 248.0
+margin_right = 992.0
+margin_bottom = 424.0
+texture_normal = ExtResource( 4 )
+inspect_dialog = [ "Here's a pile of SPARE OUTFITS, just in case you get into any more GRUESOME FAKE DEATHS today.", "You probably will; whether or not they are ACTUALLY FAKE THIS TIME, however, will be up to debate. You probably don't know this yet." ]
+
+[node name="Bloodcaps" parent="." instance=ExtResource( 1 )]
+margin_left = 544.0
+margin_top = 248.0
+margin_right = 656.0
+margin_bottom = 312.0
+texture_normal = ExtResource( 3 )
+inspect_dialog = [ "Your trusty BLOOD CAPSULES! You never go anywhere without these. An absolute must-have for any HORROR AFFICIONADO.", "Luckily these taste of chocolate syrup, unlike the shitty dollar store brands. Those taste so awful they make you want to ACTUALLY DIE." ]
+
+[node name="Sewing" parent="." instance=ExtResource( 1 )]
+margin_left = 48.0
+margin_top = 32.0
+margin_right = 300.0
+margin_bottom = 176.0
+texture_normal = ExtResource( 5 )
+inspect_dialog = [ "Here's your trusty SEWING SUPPLIES! It's been responsible for more than a few SPOOKY COSPLAYS over the years. An aspiring tailor is always sure to have plenty of fabric at the ready, in case RAPID ONSET FASHION-ITIS comes around. Which is often for you." ]
+
+[node name="Arms" parent="." instance=ExtResource( 1 )]
+margin_left = 416.0
+margin_top = 24.0
+margin_right = 576.0
+margin_bottom = 216.0
+texture_normal = ExtResource( 2 )
+inspect_dialog = [ "Your FAKE ARMS have served you well over the years. Nary a day passes where you needn't an extra hand or two.", "They also cost A FUCKING FORTUNE, so really you're just looking for any excuse to get as much mileage out of these things as possible." ]
+
+[node name="Exit" type="TextureButton" parent="."]
+margin_left = 912.0
+margin_top = 488.0
+margin_right = 1008.0
+margin_bottom = 584.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 6 )
+expand = true
+
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

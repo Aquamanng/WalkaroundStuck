@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Interactables/InteractActions/ActionPopup.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Interactables/PopupExitButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/Popups/ComputerScreen.png" type="Texture" id=3]
+[ext_resource path="res://Import/SFX/Badoink.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sprites/Popups/Exit_PopupHover.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Popups/Exit_PopupPressed.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+
+[node name="ComputerPopup" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1024.0
+margin_bottom = 608.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 512, 304 )
+scale = Vector2( 1.24556, 1.24556 )
+texture = ExtResource( 3 )
+
+[node name="Exit" parent="." instance=ExtResource( 2 )]
+margin_left = 912.0
+margin_top = 496.0
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Sprites/Characters/Abby/Abby_SheetWip.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Player/PlayerController.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player/PlayerCamera.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 26.0
+height = 0.0
+
+[sub_resource type="Animation" id=7]
+resource_name = "BackIdle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "BackWalk"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 8, 5, 8 ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 2
+script = ExtResource( 2 )
+move_speed = 18.0
+acceleration = 80.0
+deceleration = 100.0
+
+[node name="CharSprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 4
+
+[node name="PlayerCol" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 103 )
+shape = SubResource( 1 )
+
+[node name="PlayerAnimator" type="AnimationPlayer" parent="."]
+playback_speed = 1.25
+anims/BackIdle = SubResource( 7 )
+anims/BackWalk = SubResource( 8 )
+anims/Idle = SubResource( 6 )
+anims/RESET = SubResource( 4 )
+anims/Walk = SubResource( 5 )
+
+[node name="PlayerCam" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+smoothing_speed = 4.0
+script = ExtResource( 3 )
+inner_view = Vector2( 1, 1 )
+outer_view = Vector2( 1.5, 1.5 )
+zoom_speed = 6.0

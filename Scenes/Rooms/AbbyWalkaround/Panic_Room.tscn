@@ -1,0 +1,136 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/Interactables/Transitionable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Interactables/Captchable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Interactables/Inspectable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/Rooms/RatPuzzle/GiftBox.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Rooms/RatPuzzle/RatRoomMain.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 48, 40 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 94.25, 76 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 84, 44 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 40, 60 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 20, 28 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 44, 156 )
+
+[node name="PanicRoomRoot" type="Node2D"]
+
+[node name="RoomMain" type="Sprite" parent="."]
+position = Vector2( 384, 368 )
+texture = ExtResource( 6 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="GiftBox" type="Sprite" parent="YSort"]
+position = Vector2( 314, 595 )
+texture = ExtResource( 5 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 255, 442 )
+
+[node name="RoomCollision" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomCollision"]
+polygon = PoolVector2Array( 86, 573, 467, 416, 691, 489, 320, 656, 264, 636, 91, 576, 39, 615, 312, 722, 764, 497, 726, 418, 458, 365, 24, 537 )
+
+[node name="DarknessOverlay" type="ColorRect" parent="."]
+margin_left = -1344.0
+margin_top = -496.0
+margin_right = 2544.0
+margin_bottom = 2056.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.431373 )
+
+[node name="GiftCaptchable" parent="." instance=ExtResource( 3 )]
+position = Vector2( 310, 610 )
+inspect_title = "Captchalogue gift."
+item_name = "Gift Box"
+sprite = ExtResource( 5 )
+description = [ "It is a gift provided by your good chum, pedigreeAlicorns.
+
+Inside the box is a letter, and a WEIRD GAME FROM A GARAGE SALE.", "...Oh shit, cookies too?? PA knows your INFINITE LUST FOR SWEETS far too well.
+
+God they're the best." ]
+captcha_target = NodePath("../YSort/GiftBox")
+
+[node name="CollisionShape2D" parent="GiftCaptchable" index="0"]
+position = Vector2( 2, -10 )
+shape = SubResource( 1 )
+
+[node name="Scythe" parent="." instance=ExtResource( 4 )]
+position = Vector2( 488, 368 )
+inspect_title = "Take the scythe."
+dialogue = [ "God, you WISH you could. Frankly it's a miracle your modus even allows you to look at the damn thing.", "Your modus's prejudice against BLADES OF ANY NATURE has made it a nightmare when trying to make a fucking sandwich. Lousy butter knives." ]
+
+[node name="CollisionShape2D" parent="Scythe" index="0"]
+position = Vector2( 102.25, -84 )
+shape = SubResource( 2 )
+
+[node name="BedCot" parent="." instance=ExtResource( 4 )]
+position = Vector2( 480, 520 )
+inspect_title = "Take a nap."
+dialogue = [ "Oh, absolutely NOT. This is barely even a bed, let alone something you'd willingly lay on. You can smell that back ache from a mile away.", "You only lay in this cot when you have a reason to huddle in this PANIC ROOM.
+
+Which, worryingly, isn't never." ]
+
+[node name="CollisionShape2D" parent="BedCot" index="0"]
+position = Vector2( 20, 0 )
+shape = SubResource( 3 )
+
+[node name="DragonPoster" parent="." instance=ExtResource( 4 )]
+position = Vector2( 384, 120 )
+inspect_title = "Examine HTTYD poster."
+dialogue = [ "You really only liked the movie for all the TERRIFYING DRAGON BEASTS in it. You couldn't care for Hiccup and his stupid moochy dragon friendship garbage.", "Dragons are cool as fuck, as also evident by that giant poster neighboring this smaller one. You are something of a DRAGON CONNOISSEUR, really." ]
+
+[node name="CollisionShape2D" parent="DragonPoster" index="0"]
+position = Vector2( 16, 24 )
+shape = SubResource( 4 )
+
+[node name="HintSprite" parent="DragonPoster" index="1"]
+visible = true
+position = Vector2( 16, 24 )
+scale = Vector2( 0.840426, 0.840426 )
+
+[node name="RatHole" parent="." instance=ExtResource( 4 )]
+position = Vector2( 432, 408 )
+inspect_title = "Look in mouse hole."
+dialogue = [ "That ain't no mouse hole, that's a whole-ass RAT CREVICE right there. The PUZZLE often hides in there after giving you your daily dose of THE BUBONIC PLAGUE.", "Luckily he doesn't seem to be active right now.
+
+GOOD!!!" ]
+
+[node name="CollisionShape2D" parent="RatHole" index="0"]
+position = Vector2( 4, 4 )
+shape = SubResource( 5 )
+
+[node name="HintSprite" parent="RatHole" index="1"]
+scale = Vector2( 0.530585, 0.530585 )
+
+[node name="Transitionable" parent="." instance=ExtResource( 1 )]
+position = Vector2( 208, 208 )
+inspect_title = "Climb up ladder."
+target_folder = "AbbyWalkaround"
+room_name = "Abby_Room"
+warp_to = "TrapdoorWarp"
+
+[node name="CollisionShape2D" parent="Transitionable" index="0"]
+position = Vector2( 4, 28 )
+shape = SubResource( 6 )
+
+[editable path="GiftCaptchable"]
+[editable path="Scythe"]
+[editable path="BedCot"]
+[editable path="DragonPoster"]
+[editable path="RatHole"]
+[editable path="Transitionable"]
