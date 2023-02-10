@@ -19,10 +19,14 @@ var back_sprite : bool = false
 
 onready var sprite = $CharSprite
 onready var animator = $PlayerAnimator
-# For some reason I have a reference to the player camera here. This isn't used anywhere lol.
-# Player camera will eventually be independent from the main player, probably, so I can have the camera
-# move to focus on different areas of the room for cinematics and other shit.
-onready var cam = $PlayerCam
+# RemoteTransform2D to make the camera in the globally available UI scene
+# follow the player around. You can probably animate this node's position
+# for cinematics and such. Currently has the quirk of making the camera very
+# noticeably tween towards the player when loading into a scene
+onready var remote_transform : RemoteTransform2D = $CamRemoteTransform
+
+func _ready() -> void:
+	remote_transform.remote_path = UI.camera.get_path()
 
 func _process(_delta):
 	if !Global.sequence_active:
@@ -58,4 +62,5 @@ func _physics_process(delta):
 		else:
 			animator.play("BackIdle")
 	
+# warning-ignore:return_value_discarded
 	move_and_slide(move_velocity * move_speed)

@@ -23,7 +23,7 @@ func _input(event):
 		
 		texture = normal_sprite
 
-func _process(delta):
+func _process(_delta):
 	if !card_highlighted:
 		texture = normal_sprite
 

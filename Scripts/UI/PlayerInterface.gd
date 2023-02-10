@@ -22,6 +22,8 @@ onready var dialogue_box = $DialogueBox
 onready var dialogue_text = $DialogueBox/InnerPanel/DialogueText
 onready var help_button = $HelpButton
 
+onready var camera = $Camera
+
 func _input(event):
 	if event.is_action_released("toggle_inspector"):
 		toggle_inspector()

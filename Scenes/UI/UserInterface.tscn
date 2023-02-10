@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Sprites/UI/Inspector/InspectableButton.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/UI/Inspector/InspectableButtonHovered.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Sprites/UI/SylladexButton.png" type="Texture" id=14]
 [ext_resource path="res://Sprites/UI/SylladexButtonPressed.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/UI/SylladexButtonHover.png" type="Texture" id=16]
+[ext_resource path="res://Scripts/UI/Camera.gd" type="Script" id=17]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -165,6 +166,15 @@ anims/SylladexClose = SubResource( 2 )
 anims/SylladexClosedIdle = SubResource( 3 )
 anims/SylladexOpen = SubResource( 4 )
 anims/SylladexOpenIdle = SubResource( 5 )
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+smoothing_speed = 4.0
+script = ExtResource( 17 )
+inner_view = Vector2( 1, 1 )
+outer_view = Vector2( 1.5, 1.5 )
+zoom_speed = 6.0
 
 [connection signal="pressed" from="InspectableButton" to="." method="toggle_inspector"]
 [connection signal="pressed" from="CaptchableButton" to="." method="toggle_inspector"]
