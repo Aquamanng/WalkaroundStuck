@@ -32,10 +32,9 @@ func add_item(item : String, dialog, sprite : Texture):
 			card.current_item = item
 			card.current_description = dialog
 			card.item_sprite.texture = sprite
-			card.position += card.hover_pos
-			yield(get_tree().create_timer(0.04), "timeout")
-			card.position = card.normal_pos
-			yield(get_tree().create_timer(0.4), "timeout")
+			card.anim_player.play("Hover")
+			yield(get_tree().create_timer(0.02), "timeout")
+			card.anim_player.play("RESET")
 			if !UI.sylladex_open:
 				UI.close_sylladex()
 			
