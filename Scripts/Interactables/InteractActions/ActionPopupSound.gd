@@ -5,7 +5,7 @@ extends CanvasLayer
 # Absolutely nothing special.
 
 func do_interaction():
-	if Global.sequence_active or Global.dialog_active:
+	if Global.sequence_active:
 		return
 	
 	visible = true
