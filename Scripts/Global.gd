@@ -3,12 +3,11 @@ extends Node
 # I took a lot of inspiration from Sharkalien's Godot walkaround project.
 # (https://github.com/Sharkalien/Godot-YOU-THERE.-BOY.-Walkaround)
 # By that I mean I've totally just taken their code like a fucking goblin in some aspects. Sorry!
-# Good learning experience though, never would've thought to do this otherwise lol
-# Scripts will call functions in Global whenever they need them; for instance,
-# rooms will call init_room when they are finished loading in order to have Global find the player and set the current_scene as that room
+# Good learning experience though, never would've thought to do this otherwise lol,
 
-# Here's a fun fact I was essentially going to do a RoomManager on every room to try and do what I wanted to do here.
+# Here's a fun fact I was essentially going to do a RoomManager on every individual room to try and do what I wanted to do here.
 # Thank fucking GOD I found out about autoloads and shit right at the same time lmao
+# christ that wouldve been a fucking mess
 
 enum InspectorMode { INSPECTABLE, CAPTCHABLE }
 export(InspectorMode) var inspect_mode
@@ -40,6 +39,9 @@ var player_node
 var warp_path : String
 var warp_target
 
+# When Global is loaded, we create a Tween node to use for the fade effect, then connect its signal accordingly
+# Since Global is created when the game first starts, we'll need to set the current_scene manually as well
+# By checking for the last child of the scene tree's root. Then call find_nodes_in_room etc etc
 func _ready():
 	fade_tween = Tween.new()
 	add_child(fade_tween)
@@ -54,6 +56,8 @@ func _ready():
 	current_scene = root.get_child(root.get_child_count() - 1)
 	find_nodes_in_room()
 
+# Get the player node and a warp target to move the player to, if warp_target exists.
+# warp_target is defined by warp_path, which is set in the initial scene change function, start_room_transition
 func find_nodes_in_room():
 	player_node = current_scene.get_node_or_null("Player")
 	if !player_node:
@@ -67,10 +71,12 @@ func find_nodes_in_room():
 	if warp_target:
 		print("warp target found in room")
 
+# Start by enabling a sequence so nothing else can happen while the scene changes.
+# This function is called by a Transitionable, which passes in its room_path and warp_to values.
+# Sets the warp_path, then the next_scene, then starts a Tween node that fades out an overlay on the UI.
 func start_room_transition(room, warp):
 	sequence_active = true
 	
-	# maybe unnecessary? i think so but idk yet
 	if !warp.empty():
 		warp_path = warp
 	
@@ -81,18 +87,24 @@ func start_room_transition(room, warp):
 	fade_tween.interpolate_property(fade_effect, "color", Color(0,0,0,0), Color(0,0,0,1), fade_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	fade_tween.start()
 
+# Since this is called when the Tween completes, it will do one of two things:
+# If we're fading out, then that means we're transitioning to the next scene. Call scene_transition and fade again
+# but this time fade_out is false, so when it completes again we just reset the other variables back to normal and move on
 func _on_fade_completed(_object, _key):
 	if scene_fading:
-		if fade_out:
-			fade_out = false
+		if !fade_out:
+			fade_out = true
 			scene_fading = false
 		else:
-			fade_out = true
+			fade_out = false
 			scene_transition()
 			var fade_speed = 0.25
 			fade_tween.interpolate_property(fade_effect, "color", Color(0,0,0,1), Color(0,0,0,0), fade_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 			fade_tween.start()
 
+# Delay the scene load so that it only unloads the scene when the game is idle.
+# Obviously if the current scene is still running code and it gets freed/changed, shit might not work as intended.
+# A shrimple solution
 func scene_transition():
 	if !next_scene.empty():
 		call_deferred("_change_to_room")
