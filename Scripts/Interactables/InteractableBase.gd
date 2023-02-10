@@ -46,7 +46,7 @@ func interact_hover():
 	inspect_box.rect_global_position = get_global_mouse_position() + box_offset
 
 func _input(event):
-	if event.is_action_released("submit") and enable_interact and can_use:
+	if event.is_action_released("submit") and enable_interact and can_use and !Global.sequence_active:
 		do_interaction()
 
 func do_interaction():
