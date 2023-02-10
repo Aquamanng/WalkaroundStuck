@@ -11,7 +11,7 @@ export(Array, String, MULTILINE) var inspect_dialog
 
 func _on_Button_pressed():
 	if range(inspect_dialog.size()).has(0):
-		if !Global.sequence_active:
+		if !Global.dialog_active:
 			Global.dialogue.trigger_dialogue(inspect_dialog)
 
 func _on_Button_mouse_entered():
