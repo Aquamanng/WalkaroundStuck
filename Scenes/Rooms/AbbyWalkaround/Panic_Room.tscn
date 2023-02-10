@@ -14,7 +14,7 @@ extents = Vector2( 48, 40 )
 extents = Vector2( 94.25, 76 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 84, 44 )
+extents = Vector2( 68, 44 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 40, 60 )
@@ -69,6 +69,10 @@ captcha_target = NodePath("../YSort/GiftBox")
 position = Vector2( 2, -10 )
 shape = SubResource( 1 )
 
+[node name="HintSprite" parent="GiftCaptchable" index="1"]
+position = Vector2( 2, -10 )
+scale = Vector2( 0.770833, 0.770833 )
+
 [node name="Scythe" parent="." instance=ExtResource( 4 )]
 position = Vector2( 488, 368 )
 inspect_title = "Take the scythe."
@@ -78,6 +82,10 @@ dialogue = [ "God, you WISH you could. Frankly it's a miracle your modus even al
 position = Vector2( 102.25, -84 )
 shape = SubResource( 2 )
 
+[node name="HintSprite" parent="Scythe" index="1"]
+position = Vector2( 24, -32 )
+scale = Vector2( 0.840426, 0.840426 )
+
 [node name="BedCot" parent="." instance=ExtResource( 4 )]
 position = Vector2( 480, 520 )
 inspect_title = "Take a nap."
@@ -86,8 +94,12 @@ dialogue = [ "Oh, absolutely NOT. This is barely even a bed, let alone something
 Which, worryingly, isn't never." ]
 
 [node name="CollisionShape2D" parent="BedCot" index="0"]
-position = Vector2( 20, 0 )
+position = Vector2( 4, 0 )
 shape = SubResource( 3 )
+
+[node name="HintSprite" parent="BedCot" index="1"]
+position = Vector2( 0, -1.52588e-05 )
+scale = Vector2( 0.670213, 0.670213 )
 
 [node name="DragonPoster" parent="." instance=ExtResource( 4 )]
 position = Vector2( 384, 120 )
@@ -99,9 +111,8 @@ position = Vector2( 16, 24 )
 shape = SubResource( 4 )
 
 [node name="HintSprite" parent="DragonPoster" index="1"]
-visible = true
-position = Vector2( 16, 24 )
-scale = Vector2( 0.840426, 0.840426 )
+position = Vector2( 16, 32 )
+scale = Vector2( 0.760639, 0.760639 )
 
 [node name="RatHole" parent="." instance=ExtResource( 4 )]
 position = Vector2( 432, 408 )
@@ -115,7 +126,8 @@ position = Vector2( 4, 4 )
 shape = SubResource( 5 )
 
 [node name="HintSprite" parent="RatHole" index="1"]
-scale = Vector2( 0.530585, 0.530585 )
+visible = true
+scale = Vector2( 0.605717, 0.605717 )
 
 [node name="Transitionable" parent="." instance=ExtResource( 1 )]
 position = Vector2( 208, 208 )
@@ -127,6 +139,9 @@ warp_to = "TrapdoorWarp"
 [node name="CollisionShape2D" parent="Transitionable" index="0"]
 position = Vector2( 4, 28 )
 shape = SubResource( 6 )
+
+[node name="HintSprite" parent="Transitionable" index="1"]
+position = Vector2( 8, 0 )
 
 [editable path="GiftCaptchable"]
 [editable path="Scythe"]
