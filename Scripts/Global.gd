@@ -127,6 +127,12 @@ func _change_to_room():
 		player_node.global_position = warp_target.get_position()
 		warp_target = null
 	
-	player_node.cam.global_position = player_node.global_position
+	# Since the camera's position gets updated by the player's RemoteTransform2D
+	# you don't need to manually update it anymore. However, while the camera's
+	# smoothing is enabled, this transformation will be noticeable when changing
+	# rooms. Disabling it while transitioning will fix this, but idk how to 
+	# re-enable it afterwards. YOU figure that out if you want
+#	UI.camera.smoothing_enabled = false
+#	UI.camera.global_position = player_node.remote_transform.global_position
 	
 	sequence_active = false

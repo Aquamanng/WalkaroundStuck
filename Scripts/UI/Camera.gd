@@ -3,6 +3,7 @@ extends Camera2D
 # Just a zoom for the player camera. Scroll in, zoom in. Scroll out, zoom out.
 # That's all there really is to say on the matter.
 # // TODO: Have the camera independent/not a child of the player so it can move to other look-at targets? \\
+# // ^ Done :) -Sharkalien\\ 
 
 export var inner_view : Vector2
 export var outer_view : Vector2
