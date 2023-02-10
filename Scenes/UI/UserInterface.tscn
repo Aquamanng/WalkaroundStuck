@@ -170,7 +170,7 @@ anims/SylladexOpenIdle = SubResource( 5 )
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 smoothing_enabled = true
-smoothing_speed = 4.0
+smoothing_speed = 3.0
 script = ExtResource( 17 )
 inner_view = Vector2( 1, 1 )
 outer_view = Vector2( 1.5, 1.5 )
