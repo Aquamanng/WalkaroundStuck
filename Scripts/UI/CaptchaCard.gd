@@ -1,5 +1,5 @@
 class_name CaptchaCard
-extends Node2D
+extends Control
 
 var current_item : String
 var current_description = []
