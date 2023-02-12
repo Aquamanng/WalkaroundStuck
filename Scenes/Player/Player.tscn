@@ -64,7 +64,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 4 ]
+"values": [ 8 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -95,7 +95,7 @@ deceleration = 100.0
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 4
-frame = 4
+frame = 8
 
 [node name="PlayerCol" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 103 )

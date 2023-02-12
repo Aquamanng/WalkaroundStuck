@@ -11,33 +11,64 @@ font_data = ExtResource( 3 )
 
 [node name="Sylladex" type="Node2D"]
 script = ExtResource( 2 )
-cards = [ NodePath("Background/Card1"), NodePath("Background/Card2"), NodePath("Background/Card3"), NodePath("Background/Card4"), NodePath("Background/Card5"), NodePath("Background/Card6"), NodePath("Background/Card7") ]
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 512, 520 )
 scale = Vector2( 1.57538, 1.6 )
 texture = ExtResource( 1 )
 
-[node name="Card1" parent="Background" instance=ExtResource( 7 )]
-position = Vector2( -183.434, 12.5 )
+[node name="CardsContainer" type="HBoxContainer" parent="Background"]
+anchor_top = 0.25
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -325.0
+margin_top = -45.0
+margin_right = -325.0
+margin_bottom = -50.0
+custom_constants/separation = 20
+alignment = 1
 
-[node name="Card2" parent="Background" instance=ExtResource( 7 )]
-position = Vector2( -122.497, 12.5 )
+[node name="Card1" parent="Background/CardsContainer" instance=ExtResource( 7 )]
+margin_left = 100.0
+margin_top = 0.0
+margin_right = 147.0
+margin_bottom = 70.0
 
-[node name="Card3" parent="Background" instance=ExtResource( 7 )]
-position = Vector2( -60.9377, 12.5 )
+[node name="Card2" parent="Background/CardsContainer" instance=ExtResource( 7 )]
+margin_left = 167.0
+margin_top = 0.0
+margin_right = 214.0
+margin_bottom = 70.0
 
-[node name="Card4" parent="Background" instance=ExtResource( 7 )]
-position = Vector2( 0, 12.5 )
+[node name="Card3" parent="Background/CardsContainer" instance=ExtResource( 7 )]
+margin_left = 234.0
+margin_top = 0.0
+margin_right = 281.0
+margin_bottom = 70.0
 
-[node name="Card5" parent="Background" instance=ExtResource( 7 )]
-position = Vector2( 60.9377, 12.5 )
+[node name="Card4" parent="Background/CardsContainer" instance=ExtResource( 7 )]
+margin_left = 301.0
+margin_top = 0.0
+margin_right = 348.0
+margin_bottom = 70.0
 
-[node name="Card6" parent="Background" instance=ExtResource( 7 )]
-position = Vector2( 122.524, 12.5 )
+[node name="Card5" parent="Background/CardsContainer" instance=ExtResource( 7 )]
+margin_left = 368.0
+margin_top = 0.0
+margin_right = 415.0
+margin_bottom = 70.0
 
-[node name="Card7" parent="Background" instance=ExtResource( 7 )]
-position = Vector2( 183.461, 12.5 )
+[node name="Card6" parent="Background/CardsContainer" instance=ExtResource( 7 )]
+margin_left = 435.0
+margin_top = 0.0
+margin_right = 482.0
+margin_bottom = 70.0
+
+[node name="Card7" parent="Background/CardsContainer" instance=ExtResource( 7 )]
+margin_left = 502.0
+margin_top = 0.0
+margin_right = 549.0
+margin_bottom = 70.0
 
 [node name="ItemNameDisplay" type="RichTextLabel" parent="."]
 margin_left = 848.0

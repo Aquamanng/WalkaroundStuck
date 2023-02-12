@@ -6,7 +6,7 @@ extends Node2D
 # If you attempt to captchalogue an item and your Sylladex is full, you wont captchalogue it until you use an item
 # Used items are destroyed, or "expended", though that can be toggled on a per-interaction basis
 # Primarily just a way of carrying around items like in your average point and click adventure to solve puzzles n whatnot
-export(Array, NodePath) var cards = []
+onready var cards = $Background/CardsContainer.get_children()
 var full_dialogue = ["You can't CAPTCHALOGUE anything right now! Your SYLLADEX is full!"]
 onready var name_display = $ItemNameDisplay
 
@@ -17,8 +17,7 @@ onready var name_display = $ItemNameDisplay
 # // TODO: Convert it into a custom Resource instead to alleviate that mess? \\
 # This doesn't look the most elegant but it works fine. Good enough for me!
 func add_item(item : String, dialog, sprite : Texture):
-	for c in cards:
-		var card = get_node(c)
+	for card in cards:
 		if card.current_item.empty():
 			Global.sequence_active = true
 			# Wanted to have different delay times depending on if the sylladex was already opened or not
@@ -32,10 +31,10 @@ func add_item(item : String, dialog, sprite : Texture):
 			card.current_item = item
 			card.current_description = dialog
 			card.item_sprite.texture = sprite
-			card.position += card.hover_pos
+			card.anim_player.play("Hover")
 			yield(get_tree().create_timer(0.04), "timeout")
-			card.position = card.normal_pos
-			yield(get_tree().create_timer(0.4), "timeout")
+			card.anim_player.play("RESET")
+			yield(get_tree().create_timer(0.04), "timeout")
 			if !UI.sylladex_open:
 				UI.close_sylladex()
 			
@@ -49,8 +48,7 @@ func add_item(item : String, dialog, sprite : Texture):
 # Same as adding an item, loop through all the cards; if its current_item matches the target string,
 # then we just get rid of the item. Gone. Reduced to atoms.
 func remove_item(target : String):
-	for c in cards:
-		var card = get_node(c)
+	for card in cards:
 		if card.current_item.to_upper() == target.to_upper():
 			card.current_item = ""
 			card.current_description = []
@@ -61,8 +59,7 @@ func remove_item(target : String):
 # Loop through all the cards; if it has the target string as its current_item,
 # then return true. Otherwise return false.
 func has_item(target : String) -> bool:
-	for c in cards:
-		var card = get_node(c)
+	for card in cards:
 		if !card.current_item.empty() and card.current_item.to_upper() == target.to_upper():
 			return true
 	

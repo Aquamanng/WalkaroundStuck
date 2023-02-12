@@ -152,6 +152,7 @@ margin_left = 128.0
 margin_top = 368.0
 margin_right = 896.0
 margin_bottom = 576.0
+mouse_filter = 0
 
 [node name="FadeOverlay" type="ColorRect" parent="."]
 visible = false
