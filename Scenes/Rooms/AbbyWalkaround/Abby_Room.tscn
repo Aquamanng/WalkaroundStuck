@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Sprites/Rooms/AbbyBedroom/RoomMain.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Rooms/AbbyBedroom/TerrariumLowTable.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Scenes/Misc/AbbyBedroom/ComputerPopup.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Interactables/InteractActions/ActionPopupSound.gd" type="Script" id=12]
 [ext_resource path="res://Sprites/Rooms/AbbyBedroom/BaseballBat.png" type="Texture" id=13]
+[ext_resource path="res://Items/CaptchaItems/BaseballBat.tres" type="Resource" id=14]
 [ext_resource path="res://Scenes/Interactables/Captchable.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Interactables/Transitionable.tscn" type="PackedScene" id=16]
 
@@ -125,8 +126,9 @@ texture = ExtResource( 4 )
 
 [node name="BatCaptchable" parent="CAPTCHABLES" instance=ExtResource( 15 )]
 position = Vector2( 920, 512 )
+scale = Vector2( 1.02555, 0.95663 )
 inspect_title = "Captchalogue bat."
-item_path = "BaseballBat"
+item_path = ExtResource( 14 )
 captcha_target = NodePath("../../BaseballBat")
 
 [node name="CollisionShape2D" parent="CAPTCHABLES/BatCaptchable" index="0"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Sprites/Rooms/LivingRoom/LivingRoomTelevision.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Rooms/LivingRoom/LowTableMiddle.png" type="Texture" id=2]
@@ -17,7 +17,10 @@
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Interactables/Transitionable.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scenes/Interactables/Captchable.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Items/CaptchaItems/PopcornBowl.tres" type="Resource" id=18]
+[ext_resource path="res://Items/CaptchaItems/FridgeCreechur.tres" type="Resource" id=19]
 [ext_resource path="res://Sprites/Rooms/LivingRoom/Toofboy.png" type="Texture" id=20]
+[ext_resource path="res://Items/CaptchaItems/Toofboy.tres" type="Resource" id=21]
 [ext_resource path="res://Sprites/Rooms/LivingRoom/LaCreachura.png" type="Texture" id=22]
 [ext_resource path="res://Scenes/Interactables/Inspectable.tscn" type="PackedScene" id=23]
 
@@ -407,7 +410,7 @@ scale = Vector2( 1.18085, 1.18085 )
 [node name="PopcornBowl" parent="CAPTCHABLES" instance=ExtResource( 17 )]
 position = Vector2( -712, -128 )
 inspect_title = "Take popcorn bowl."
-item_path = "PopcornBowl"
+item_path = ExtResource( 18 )
 captcha_target = NodePath("../../YSort/TablePopcorn")
 
 [node name="CollisionShape2D" parent="CAPTCHABLES/PopcornBowl" index="0"]
@@ -422,7 +425,7 @@ z_index = 1
 [node name="TheToofBoy" parent="CAPTCHABLES" instance=ExtResource( 17 )]
 position = Vector2( -304, 272 )
 inspect_title = "Take Toofboy."
-item_path = "Toofboy"
+item_path = ExtResource( 21 )
 captcha_target = NodePath("../../YSort/SinkCreature")
 
 [node name="CollisionShape2D" parent="CAPTCHABLES/TheToofBoy" index="0"]
@@ -436,7 +439,7 @@ scale = Vector2( 0.75, 0.75 )
 [node name="FridgeCreechur" parent="CAPTCHABLES" instance=ExtResource( 17 )]
 position = Vector2( 408, 632 )
 inspect_title = "Grab the Creechur."
-item_path = "FridgeCreechur"
+item_path = ExtResource( 19 )
 captcha_target = NodePath("../../YSort/TheCreature")
 
 [node name="CollisionShape2D" parent="CAPTCHABLES/FridgeCreechur" index="0"]

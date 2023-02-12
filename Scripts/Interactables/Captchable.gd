@@ -6,17 +6,15 @@ extends Interactable
 # to captchalogue it in their Sylladex and store it for later use. Interactables can require a Captchable item in the sylladex to be able to be interacted with.
 # of course, if the sylladex is full, the player won't be able to captchalogue more items.
 
-# Can't export custom resources yet so I'll have to make do with a string
-# String will be a name that points to a CaptchaItem Resource
-# under res://Items/CaptchaItems/(item_name).tres ; CASE-SENSITIVE!!!
-export var item_path : String
+# Drag in a CaptchaItem Resource to this field.
+export var item_path : Resource
 var captcha_item : CaptchaItem
 # This NodePath should point to the sprite in the actual environment that will disappear
 # when the item is captchalogued.
 export var captcha_target : NodePath
 
 func _ready():
-	captcha_item = load("res://Items/CaptchaItems/" + item_path + ".tres")
+	captcha_item = load(item_path.resource_path)
 	
 	inspect_text.text = inspect_title
 	if Global.sylladex.has_item(captcha_item.item_name):
