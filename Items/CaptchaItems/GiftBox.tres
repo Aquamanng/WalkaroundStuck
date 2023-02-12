@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/CaptchaItem.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Rooms/RatPuzzle/GiftBox.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+item_name = "Gift Box"
+item_sprite = ExtResource( 2 )
+item_description = [ "It is a gift provided by your good chum, pedigreeAlicorns.
+
+Inside the box is a letter, and a WEIRD GAME FROM A GARAGE SALE.", "...Oh shit, cookies too?! PA knows your INFINITE LUST FOR SWEETS too well.
+
+God they're the best." ]

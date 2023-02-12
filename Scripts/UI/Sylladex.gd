@@ -15,10 +15,11 @@ onready var name_display = $ItemNameDisplay
 # It's all smoke and mirrors, you're not even actually captchaloguing an actual item!
 # Just some strings and a sprite.
 # // TODO: Convert it into a custom Resource instead to alleviate that mess? \\
+# // Done! -Aqua \\
 # This doesn't look the most elegant but it works fine. Good enough for me!
-func add_item(item : String, dialog, sprite : Texture):
+func add_item(item : CaptchaItem):
 	for card in cards:
-		if card.current_item.empty():
+		if card.current_item == null:
 			Global.sequence_active = true
 			# Wanted to have different delay times depending on if the sylladex was already opened or not
 			# A very brief pause if already opened, a lesser pause if not, but still one that mimics a "freezeframe" mid-game
@@ -29,12 +30,11 @@ func add_item(item : String, dialog, sprite : Texture):
 				yield(get_tree().create_timer(0.15), "timeout")
 			
 			card.current_item = item
-			card.current_description = dialog
-			card.item_sprite.texture = sprite
+			card.item_sprite.texture = item.item_sprite
 			card.anim_player.play("Hover")
 			yield(get_tree().create_timer(0.04), "timeout")
 			card.anim_player.play("RESET")
-			yield(get_tree().create_timer(0.04), "timeout")
+			yield(get_tree().create_timer(0.16), "timeout")
 			if !UI.sylladex_open:
 				UI.close_sylladex()
 			
@@ -49,18 +49,17 @@ func add_item(item : String, dialog, sprite : Texture):
 # then we just get rid of the item. Gone. Reduced to atoms.
 func remove_item(target : String):
 	for card in cards:
-		if card.current_item.to_upper() == target.to_upper():
-			card.current_item = ""
-			card.current_description = []
-			card.item_sprite.texture = null
+		if card.current_item.item_name.to_upper() == target.to_upper():
+			card.current_item = null
 			return
 
 # You probably know the drill by now.
-# Loop through all the cards; if it has the target string as its current_item,
+# Loop through all the cards; if it has the target string as its current item's name,
 # then return true. Otherwise return false.
 func has_item(target : String) -> bool:
 	for card in cards:
-		if !card.current_item.empty() and card.current_item.to_upper() == target.to_upper():
+		if card.current_item != null and card.current_item.item_name.to_upper() == target.to_upper():
+			print('has item')
 			return true
 	
 	return false

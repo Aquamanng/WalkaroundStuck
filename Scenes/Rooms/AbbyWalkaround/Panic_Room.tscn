@@ -56,13 +56,7 @@ color = Color( 0, 0, 0, 0.431373 )
 [node name="GiftCaptchable" parent="." instance=ExtResource( 3 )]
 position = Vector2( 310, 610 )
 inspect_title = "Captchalogue gift."
-item_name = "Gift Box"
-sprite = ExtResource( 5 )
-description = [ "It is a gift provided by your good chum, pedigreeAlicorns.
-
-Inside the box is a letter, and a WEIRD GAME FROM A GARAGE SALE.", "...Oh shit, cookies too?? PA knows your INFINITE LUST FOR SWEETS far too well.
-
-God they're the best." ]
+item_path = "GiftBox"
 captcha_target = NodePath("../YSort/GiftBox")
 
 [node name="CollisionShape2D" parent="GiftCaptchable" index="0"]

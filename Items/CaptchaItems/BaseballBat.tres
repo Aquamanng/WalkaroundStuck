@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/CaptchaItem.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Captchables/AbbyRoomBat.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+item_name = "Baseball Bat"
+item_sprite = ExtResource( 2 )
+item_description = [ "You keep this around to ward off any ghosts that may lurk under your bed. Which never happens, but you never know!", "Batkind would be a lovely specibus allocation if not for the INFANTILE OVERLORD that supervises your sylladex. Lousy goddamn fetch modus." ]

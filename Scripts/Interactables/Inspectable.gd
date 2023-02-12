@@ -13,6 +13,8 @@ export(Array, NodePath) var next_interactions = []
 # If blank, no item required
 # If required_item isn't in the player's Sylladex at the time of interaction,
 # trigger a dialogue sequence using itemfail_dialogue and then return.
+# It should match the item_name of the CaptchaItem Resource precisely in terms of punctuation and/or spacing
+# The sylladex will force the name to uppercase when calling has_item so case-sensitivity isn't an issue
 export var required_item : String
 export var expend_required_item : bool = false
 export(Array, String, MULTILINE) var itemfail_dialogue

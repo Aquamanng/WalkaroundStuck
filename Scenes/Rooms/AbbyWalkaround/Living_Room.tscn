@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Sprites/Rooms/LivingRoom/LivingRoomTelevision.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Rooms/LivingRoom/LowTableMiddle.png" type="Texture" id=2]
@@ -17,10 +17,7 @@
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Interactables/Transitionable.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scenes/Interactables/Captchable.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Sprites/Captchables/LivingRoomPopcorn.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Captchables/CreechurCaptchable.png" type="Texture" id=19]
 [ext_resource path="res://Sprites/Rooms/LivingRoom/Toofboy.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/Captchables/ToofboyCaptchable.png" type="Texture" id=21]
 [ext_resource path="res://Sprites/Rooms/LivingRoom/LaCreachura.png" type="Texture" id=22]
 [ext_resource path="res://Scenes/Interactables/Inspectable.tscn" type="PackedScene" id=23]
 
@@ -410,11 +407,7 @@ scale = Vector2( 1.18085, 1.18085 )
 [node name="PopcornBowl" parent="CAPTCHABLES" instance=ExtResource( 17 )]
 position = Vector2( -712, -128 )
 inspect_title = "Take popcorn bowl."
-item_name = "Popcorn Bowl"
-sprite = ExtResource( 18 )
-description = [ "It's a bowl of popcorn that's been left out since last night's HORROR FLICK BINGE, a daily occurrence that you would never skimp out on.", "...Eww, the butter's totally soaked into the popcorn now. It's all cold and soggy. It's practically like mush now.
-
-You'll still totally eat it. You're weird like that." ]
+item_path = "PopcornBowl"
 captcha_target = NodePath("../../YSort/TablePopcorn")
 
 [node name="CollisionShape2D" parent="CAPTCHABLES/PopcornBowl" index="0"]
@@ -429,13 +422,7 @@ z_index = 1
 [node name="TheToofBoy" parent="CAPTCHABLES" instance=ExtResource( 17 )]
 position = Vector2( -304, 272 )
 inspect_title = "Take Toofboy."
-item_name = "Toofboy"
-sprite = ExtResource( 21 )
-description = [ "IT'S TOOFBOY!!! EVERYBODY LOVES TOOFBOY!!!! EVERYBODY GIVE A ROUND OF APPLAUSE TO THE TRUE HERO OF THIS STORY!!! TOOFBOY WILL LIVE FOREVER!!!!!!
-
-WOOOOOOO!!!!!!!", "...You really don't like Toofboy very much.
-
-Why did you captchalogue this godforsaken demon?!?" ]
+item_path = "Toofboy"
 captcha_target = NodePath("../../YSort/SinkCreature")
 
 [node name="CollisionShape2D" parent="CAPTCHABLES/TheToofBoy" index="0"]
@@ -449,11 +436,7 @@ scale = Vector2( 0.75, 0.75 )
 [node name="FridgeCreechur" parent="CAPTCHABLES" instance=ExtResource( 17 )]
 position = Vector2( 408, 632 )
 inspect_title = "Grab the Creechur."
-item_name = "CREECHUR..."
-sprite = ExtResource( 19 )
-description = [ "This CREECHUR is an observant daemon from beyond the ETHEREAL VOID KINGDOMS. It is a heinous deity that can consume reality for breakfast. It sits atop one of the FIVE HELMS OF THE AETHER GOD COUNCIL.", "Merely holding one of these beings is a transgression against paradox space beyond comprehension. To wield all five is to become inconceivable, incomprehensible, insatiable and unstoppable.", "Yeah no, you just bought this asshole at Toys R Us last year. Pretty damn scary if you ask you. Or at least just a little unnerving.
-
-...Why is he looking at you like that???", "1/5(?) CREECHURS FOUND" ]
+item_path = "FridgeCreechur"
 captcha_target = NodePath("../../YSort/TheCreature")
 
 [node name="CollisionShape2D" parent="CAPTCHABLES/FridgeCreechur" index="0"]

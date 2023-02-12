@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/CaptchaItem.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Captchables/CreechurCaptchable.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+item_name = "Creechur"
+item_sprite = ExtResource( 2 )
+item_description = [ "The CREECHUR is an observant daemon from beyond the ETHEREAL VOID KINGDOMS. It is a heinous deity that can consume reality for breakfast. It sits atop one of the FIVE HELMS OF THE AETHER COUNCIL.", "Merely holding one of these awesome beings is a violation against paradox space's existence itself. To wield the cruel aura of this beast is to stare at life, death and all in between and give it the bird.", "Yeah, no, you just bought this guy at Spirit Halloween one time. He's pretty spooky, and also very silly.
+
+Just a silly little guy. Nothing else to it.", "1/5(???) CREECHURS FOUND" ]

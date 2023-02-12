@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/CaptchaItem.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Captchables/LivingRoomPopcorn.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+item_name = "Popcorn Bowl"
+item_sprite = ExtResource( 2 )
+item_description = [ "It's a bowl of popcorn that's been left out since last night's FLICK BINGE SESSION, a nightly occurrence that you would never miss out on.", "...Eww, the butter's totally soaked into all the popcorn now. It's all cold and soggy. Practically mush at this point.
+
+You'll still totally eat it. You're gross like that." ]

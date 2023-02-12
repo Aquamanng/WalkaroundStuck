@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Sprites/Rooms/AbbyBedroom/RoomMain.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Rooms/AbbyBedroom/TerrariumLowTable.png" type="Texture" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://Scenes/Misc/AbbyBedroom/ComputerPopup.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Interactables/InteractActions/ActionPopupSound.gd" type="Script" id=12]
 [ext_resource path="res://Sprites/Rooms/AbbyBedroom/BaseballBat.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Captchables/AbbyRoomBat.png" type="Texture" id=14]
 [ext_resource path="res://Scenes/Interactables/Captchable.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Interactables/Transitionable.tscn" type="PackedScene" id=16]
 
@@ -127,9 +126,7 @@ texture = ExtResource( 4 )
 [node name="BatCaptchable" parent="CAPTCHABLES" instance=ExtResource( 15 )]
 position = Vector2( 920, 512 )
 inspect_title = "Captchalogue bat."
-item_name = "Baseball Bat"
-sprite = ExtResource( 14 )
-description = [ "You usually keep this around to ward off any ghosts and ghouls that hide under your bed. Which never happens, but you never know!", "Batkind would be a lovely specibus allocation if not for the INFANTILE OVERLORD that supervises your Sylladex. Lousy goddamn fetch modus." ]
+item_path = "BaseballBat"
 captcha_target = NodePath("../../BaseballBat")
 
 [node name="CollisionShape2D" parent="CAPTCHABLES/BatCaptchable" index="0"]

@@ -29,7 +29,7 @@ func _ready() -> void:
 	remote_transform.remote_path = UI.camera.get_path()
 
 func _process(_delta):
-	if !Global.sequence_active:
+	if !Global.sequence_active and !Global.dialog_active:
 		if Input.is_action_pressed("move_left"):
 			sprite.flip_h = true
 		elif Input.is_action_pressed("move_right"):

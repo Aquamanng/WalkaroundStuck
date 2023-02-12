@@ -6,17 +6,20 @@ extends Interactable
 # to captchalogue it in their Sylladex and store it for later use. Interactables can require a Captchable item in the sylladex to be able to be interacted with.
 # of course, if the sylladex is full, the player won't be able to captchalogue more items.
 
-# Item name is used to keep track of items when stored in Sylladex
-# and checked against interactions that require that certain item.
-export var item_name : String
-export var sprite : Texture
-# When an item is clicked on in a Captcha slot in the Sylladex, this will pop up in the dialogue box.
-export(Array, String, MULTILINE) var description
+# Can't export custom resources yet so I'll have to make do with a string
+# String will be a name that points to a CaptchaItem Resource
+# under res://Items/CaptchaItems/(item_name).tres ; CASE-SENSITIVE!!!
+export var item_path : String
+var captcha_item : CaptchaItem
+# This NodePath should point to the sprite in the actual environment that will disappear
+# when the item is captchalogued.
 export var captcha_target : NodePath
 
 func _ready():
+	captcha_item = load("res://Items/CaptchaItems/" + item_path + ".tres")
+	
 	inspect_text.text = inspect_title
-	if Global.sylladex.has_item(item_name):
+	if Global.sylladex.has_item(captcha_item.item_name):
 		visible = false
 		var captcha_obj = get_node(captcha_target)
 		captcha_obj.visible = false
@@ -27,7 +30,7 @@ func _process(_delta):
 # This will store the item in the Sylladex assuming the Sylladex is not full.
 # Otherwise have the dialogue box yell at you maybe
 func do_interaction():
-	Global.sylladex.add_item(item_name, description, sprite)
+	Global.sylladex.add_item(captcha_item)
 	visible = false
 	assert (get_node(captcha_target), "captcha_target is invalid on " + name + "! You should probably fix that.")
 	var captcha_obj = get_node(captcha_target)

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/CaptchaItem.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Captchables/ToofboyCaptchable.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+item_name = "Toofboy"
+item_sprite = ExtResource( 2 )
+item_description = [ "IT'S TOOFBOY!!! EVERYBODY GIVE A ROUND OF APPLAUSE TO TOOFBOY!! WORLD'S MOST IMPORTANT CHARACTER!!! ISN'T HE GREAT, FOLKS! TOOFBOY, BABY, OH YEAH!!! HE WILL LIVE FOREVER!!! HE IS THE TRUE HERO OF THIS STORY!!", "...You really don't like Toofboy all that much.
+
+Why did you captchalogue this little freak again??" ]
